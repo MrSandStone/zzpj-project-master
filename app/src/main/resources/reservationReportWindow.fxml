@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<Pane prefHeight="360.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="app.hotel.controllers.reservationcontrollers.RaportReservationController">
+    <children>
+        <Label layoutX="102.0" layoutY="61.0" text="Od:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label layoutX="102.0" layoutY="159.0" prefHeight="17.0" prefWidth="77.0" text="Do:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+       <Label layoutX="125.0" layoutY="14.0" prefHeight="26.0" prefWidth="210.0" text="Format daty: (dd.mm.yyyy)">
+            <font>
+                <Font size="17.0"/>
+            </font>
+        </Label>
+        <DatePicker fx:id="reservationStartDate" layoutX="199.0" layoutY="57.0" prefHeight="25.0" prefWidth="160.0"/>
+        <DatePicker fx:id="reservationEndDate" layoutX="199.0" layoutY="155.0" prefHeight="25.0" prefWidth="160.0"/>
+        <Button defaultButton="true" layoutX="53.0" layoutY="264.0" mnemonicParsing="false"
+                onAction="#generateReportButtonFunction" prefHeight="48.0" prefWidth="135.0"
+                style="-fx-background-color: #c499cc; -fx-font-size: 11pt;" text="Zatwierdź"/>
+        <Button layoutX="272.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchMainWindow" prefHeight="48.0"
+                prefWidth="135.0" style="-fx-font-size: 11pt;" text="Powrót do menu"/>
+    </children>
+</Pane>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0"
+      prefWidth="460.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="app.hotel.controllers.guestcontroller.ModifyGuestController">
+    <children>
+        <Label layoutX="101.0" layoutY="54.0" text="nr dokumentu:"/>
+        <Label layoutX="101.0" layoutY="94.0" text="Imię:"/>
+        <Label layoutX="101.0" layoutY="134.0" prefHeight="17.0" prefWidth="77.0" text="Nazwisko:"/>
+        <Label layoutX="101.0" layoutY="174.0" prefHeight="17.0" prefWidth="97.0" text="Numer telefonu:"/>
+        <Label layoutX="101.0" layoutY="214.0" prefHeight="17.0" prefWidth="97.0" text="Zniżka (%):"/>
+        <TextField fx:id="guestIDCard" disable="true" editable="false" layoutX="200.0" layoutY="48.0" prefHeight="25.0"
+                   prefWidth="160.0"/>
+        <TextField fx:id="guestName" layoutX="200.0" layoutY="88.0" prefHeight="25.0" prefWidth="160.0"/>
+        <TextField fx:id="guestSurname" layoutX="200.0" layoutY="128.0" prefHeight="25.0" prefWidth="160.0"/>
+        <TextField fx:id="guestPhonenumber" layoutX="200.0" layoutY="168.0" prefHeight="25.0" prefWidth="160.0"/>
+        <TextField fx:id="guestDiscount" layoutX="200.0" layoutY="208.0" prefHeight="25.0" prefWidth="160.0"/>
+        <Button defaultButton="true" layoutX="53.0" layoutY="264.0" mnemonicParsing="false" onAction="#modifyGuest"
+                prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #FFC940; -fx-font-size: 11pt;"
+                text="Zatwierdź"/>
+        <Button layoutX="272.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchMainWindow" prefHeight="48.0"
+                prefWidth="135.0" style="-fx-font-size: 11pt;" text="Powrót do menu"/>
+
+
+
+
+    </children>
+</Pane>

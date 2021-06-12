@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0"
+      prefWidth="460.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="app.hotel.controllers.reservationcontrollers.AddReservationController">
+    <children>
+        <Label layoutX="75.0" layoutY="167.0" text="Gość:"/>
+        <Label layoutX="75.0" layoutY="87.0" prefHeight="17.0" prefWidth="104.0" text="Data początkowa:"/>
+        <Label layoutX="75.0" layoutY="207.0" prefHeight="17.0" prefWidth="97.0" text="Cena całkowita:"/>
+        <ChoiceBox fx:id="choiceBoxRoomId" layoutX="150.0" layoutY="43.0" prefHeight="25.0" prefWidth="270.0"/>
+        <ChoiceBox fx:id="choiceBoxGuestId" layoutX="150.0" layoutY="163.0" prefHeight="25.0" prefWidth="270.0"/>
+        <DatePicker fx:id="reservationStartDate" layoutX="200.0" layoutY="83.0" prefHeight="25.0" prefWidth="220.0"/>
+        <DatePicker fx:id="reservationEndDate" layoutX="200.0" layoutY="123.0" prefHeight="25.0" prefWidth="220.0"/>
+        <TextField fx:id="reservationTotalPrice" editable="false" layoutX="200.0" layoutY="203.0" prefHeight="25.0"
+                   prefWidth="220.0"/>
+
+        <Button defaultButton="true" layoutX="53.0" layoutY="264.0" mnemonicParsing="false" onAction="#addReservation"
+                prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #3DCC91; -fx-font-size: 11pt;"
+                text="Zatwierdź"/>
+        <Button layoutX="272.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchMainWindow" prefHeight="48.0"
+                prefWidth="135.0" style="-fx-font-size: 11pt;" text="Powrót do menu"/>
+
+        <Label layoutX="75.0" layoutY="47.0" text="Pokój:"/>
+        <Label layoutX="75.0" layoutY="127.0" text="Data końcowa:"/>
+
+
+    </children>
+</Pane>

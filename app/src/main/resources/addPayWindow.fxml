@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="360.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.hotel.controllers.reservationcontrollers.PayForReservationController">
+    <children>
+        <Label layoutX="102.0" layoutY="61.0" text="Id rezerwacji: " />
+        <Label layoutX="99.0"  layoutY="99.0" prefHeight="17.0" prefWidth="77.0" text="kwota w PLN:" />
+        <Label layoutX="77.0" layoutY="170.0" prefHeight="17.0" prefWidth="99.0" text="wspierane waluty:" />
+        <Label layoutX="77.0" layoutY="220.0" prefHeight="17.0" prefWidth="99.0" text="przewalutowanie:" />
+        <Label fx:id="currencyValue" layoutX="199.0" layoutY="220.0" prefHeight="17.0" prefWidth="99.0" />
+        <TextField fx:id="reservationId" disable="true"  layoutX="199.0" layoutY="57.0" prefHeight="25.0" prefWidth="160.0" />
+        <TextField fx:id="reservationTotalPrice" disable="true"  layoutX="199.0" layoutY="95.0" prefHeight="25.0" prefWidth="160.0" />
+        <ComboBox fx:id="possibleCurrency" layoutX="199.0" layoutY="170.0" prefHeight="25.0" prefWidth="160.0" onAction="#rateValue" />
+
+        <Button defaultButton="true" layoutX="53.0" layoutY="264.0" mnemonicParsing="false" onAction="#payForReservation"
+                prefHeight="48.0" prefWidth="135.0" style="-fx-background-color: #3DCC91; -fx-font-size: 11pt;" text="Zatwierdź" />
+
+        <Button layoutX="272.0" layoutY="264.0" mnemonicParsing="false" onAction="#switchMainWindow" prefHeight="48.0"
+                prefWidth="135.0" style="-fx-font-size: 11pt;" text="Powrót do menu" />
+    </children>
+</Pane>

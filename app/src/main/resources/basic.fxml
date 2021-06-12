@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="920.0" minHeight="720.0" minWidth="920.0" prefHeight="720.0"
+            prefWidth="920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="app.hotel.controllers.BasicController">
+    <children>
+        <TabPane id="MainView" layoutX="-2.0" prefHeight="720.0" prefWidth="920.0"
+                 style="-fx-background-color: #F5F8FA;" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Strona startowa">
+                    <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="920.0">
+                            <children>
+
+                                <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                                      wrappingWidth="297.357421875"/>
+                                <TextArea editable="false" layoutX="15.0" layoutY="15.0" prefHeight="661.0"
+                                          prefWidth="890.0"
+                                          text="Aplikacja będzie pomocą dla pracowników hotelu (głównie pracujących na recepcji). Ma służyć do zarządzania rezerwacjami, opłacania ich oraz generowania raportów np. tygodniowych, miesięcznych. &#10;Przedmiot: Zaawansowane zagadnienia programowania w języku Java.                                                 &#10;&#10;Skład zespołu: &#10;Goleniewski Michał&#10;Grela Radosław&#10;Lasek Karol&#10;Szafran Marek&#10;Wąchała Jakub&#10;&#10; Utrzymywanie kodu: GitHub, Travis&#10; Wykorzystany framework: Spring&#10; Testowanie kodu: testy jednostkowe / integracyjne&#10; Wzorce projektowe: obserwatora, strategii, budowiczego&#10; Używana zewnętrzna usługa REST API: https://fixer.io - przewalutowanie&#10; GUI: JavaFX&#10;&#10; Spis głównych funkcjonalności:&#10; 1. Tworzenie rezerwacji (możliwość zapłacenia od ręki, lub opłacenia do 24h przed końcem rezerwacji)&#10; 2. Zarządzanie rezerwacjami&#10; 3. Automatyczne usuwanie rezerwacji nieopłaconych&#10; 4. Tworzenie raportów na podstawie historii wcześniejszych rezerwacji&#10; 5. Wcześniejsze wymeldowywanie gości&#10; 6. Obliczenie całkowitych kosztów rezerwacji i zapłata&#10; 7. Przewalutowanie opłat&#10; 8. Wgląd w statystyki hotelu - pokoje zajęte/wolne&#10; 9. Zmiana statusu pokoju (dostępny / niedostępny / zarezerwowany)&#10; 10. Generowanie raportów z danych okresów czasowych&#10; 11. Zarządzanie klientami i przyznawanie zniżek klienckich&#10; "
+                                          wrapText="true"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="rooms" text="Pokoje">
+                    <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="920.0">
+                            <children>
+                                <Button fx:id="addRoomBtn" disable="true" layoutX="745.0" layoutY="15.0"
+                                        mnemonicParsing="false" onAction="#switchAddRoomWindow" prefHeight="70.0"
+                                        prefWidth="150.0" style="-fx-background-color: #3DCC91; -fx-font-size: 12pt;"
+                                        text="Dodaj pokój"/>
+                                <Button layoutX="745.0" layoutY="95.0" mnemonicParsing="false"
+                                        onAction="#switchModifyRoomWindow" prefHeight="70.0" prefWidth="150.0"
+                                        style="-fx-background-color: #FFC940; -fx-font-size: 12pt;"
+                                        text="Modyfikuj pokój"/>
+                                <Button fx:id="deleteRoomBtn" disable="true" layoutX="745.0" layoutY="175.0"
+                                        mnemonicParsing="false" onAction="#deleteRoom" prefHeight="70.0"
+                                        prefWidth="150.0" style="-fx-background-color: #FF7373; -fx-font-size: 12pt;"
+                                        text="Usuń pokój"/>
+                                <Button layoutX="745.0" layoutY="255.0" mnemonicParsing="false" onAction="#refreshAll"
+                                        prefHeight="70.0" prefWidth="150.0"
+                                        style="-fx-background-color: #48AFF0; -fx-font-size: 12pt;" text="Odśwież"/>
+                                <Button layoutX="745.0" layoutY="335.0" mnemonicParsing="false"
+                                        onAction="#generateRoomRaport" prefHeight="70.0" prefWidth="150.0"
+                                        style="-fx-background-color: #c499cc; -fx-font-size: 12pt;" text="Raport"/>
+                                <Label layoutX="746.0" layoutY="420.0" prefHeight="25.0" prefWidth="100.0"
+                                       text="Autoryzacja:"/>
+                                <TableView fx:id="roomsTable" editable="true" layoutX="15.0" layoutY="15.0"
+                                           prefHeight="660.0" prefWidth="700.0">
+                                    <columns>
+                                        <TableColumn fx:id="roomNumber" minWidth="40.0" prefWidth="100.0"
+                                                     resizable="false" text="Numer pokoju"/>
+                                        <TableColumn fx:id="roomCapacity" minWidth="40.0" prefWidth="159.0"
+                                                     resizable="false" text="Pojemność"/>
+                                        <TableColumn fx:id="roomPurchasePrice" minWidth="40.0" prefWidth="175.0"
+                                                     resizable="false" text="Cena pokoju (za dzień)"/>
+                                        <TableColumn fx:id="roomState" minWidth="35.0" prefWidth="265.0"
+                                                     resizable="false" text="Stan"/>
+                                    </columns>
+                                </TableView>
+                                <PasswordField fx:id="authPasswordField" layoutX="746.0" layoutY="445.0"
+                                               prefHeight="25.0" prefWidth="115.0"/>
+                                <Button defaultButton="true" layoutX="861.0" layoutY="445.0" mnemonicParsing="false"
+                                        onAction="#getAuthorization" prefHeight="25.0" prefWidth="36.0" text="OK"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="guests" text="Goście">
+                    <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="920.0">
+                            <children>
+                                <TableView fx:id="guestsTable" layoutX="15.0" layoutY="15.0" prefHeight="660.0"
+                                           prefWidth="700.0">
+                                    <columns>
+                                        <TableColumn fx:id="guestIDcard" prefWidth="141.0" resizable="false"
+                                                     text="nr dokumentu"/>
+                                        <TableColumn fx:id="guestName" prefWidth="150.0" resizable="false" text="Imię"/>
+                                        <TableColumn fx:id="guestSurname" prefWidth="170.0" resizable="false"
+                                                     text="Nazwisko"/>
+                                        <TableColumn fx:id="guestPhonenumber" prefWidth="139.0" resizable="false"
+                                                     text="Numer telefonu"/>
+                                        <TableColumn fx:id="guestDiscount" prefWidth="98.0" resizable="false"
+                                                     text="Zniżka (%)"/>
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="745.0" layoutY="15.0" mnemonicParsing="false"
+                                        onAction="#switchAddGuestWindow" prefHeight="70.0" prefWidth="150.0"
+                                        style="-fx-background-color: #3DCC91; -fx-font-size: 12pt;"
+                                        text="Dodaj gościa"/>
+                                <Button layoutX="745.0" layoutY="95.0" mnemonicParsing="false"
+                                        onAction="#switchModifyGuestWindow" prefHeight="70.0" prefWidth="150.0"
+                                        style="-fx-background-color: #FFC940; -fx-font-size: 12pt;"
+                                        text="Modyfikuj gościa"/>
+                                <Button layoutX="745.0" layoutY="175.0" mnemonicParsing="false" onAction="#deleteGuest"
+                                        prefHeight="70.0" prefWidth="150.0"
+                                        style="-fx-background-color: #FF7373; -fx-font-size: 12pt;" text="Usuń gościa"/>
+                                <Button layoutX="745.0" layoutY="255.0" mnemonicParsing="false" onAction="#refreshAll"
+                                        prefHeight="70.0" prefWidth="150.0"
+                                        style="-fx-background-color: #48AFF0; -fx-font-size: 12pt;" text="Odśwież"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="reservations" closable="false" text="Rezerwacje">
+                    <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="920.0">
+                            <children>
+                                <TableView fx:id="reservationsTable" layoutX="15.0" layoutY="15.0" prefHeight="660.0"
+                                           prefWidth="700.0">
+                                    <columns>
+                                        <TableColumn fx:id="reservationId" prefWidth="170.0" resizable="false"
+                                                     text="ID"/>
+                                        <TableColumn fx:id="guestID" prefWidth="90.0" resizable="false"
+                                                     text="nr dokumentu"/>
+                                        <TableColumn fx:id="roomID" prefWidth="80.0" resizable="false"
+                                                     text="nr pokoju"/>
+                                        <TableColumn fx:id="startDate" prefWidth="80.0" resizable="false"
+                                                     text="Data rozp."/>
+                                        <TableColumn fx:id="endDate" prefWidth="80.0" resizable="false"
+                                                     text="Data zak."/>
+                                        <TableColumn fx:id="totalPrice" prefWidth="100.0" resizable="false"
+                                                     text="Cena całkowita"/>
+                                        <TableColumn fx:id="isPayed" prefWidth="98.0" resizable="false"
+                                                     text="Czy opłacone"/>
+                                    </columns>
+                                </TableView>
+                                <Button layoutX="735.0" layoutY="15.0" mnemonicParsing="false"
+                                        onAction="#switchAddReservationWindow" prefHeight="70.0" prefWidth="170.0"
+                                        style="-fx-background-color: #3DCC91; -fx-font-size: 11pt;"
+                                        text="Utwórz rezerwację"/>
+                                <Button layoutX="735.0" layoutY="95.0" mnemonicParsing="false"
+                                        onAction="#switchModifyReservationWindow" prefHeight="70.0" prefWidth="170.0"
+                                        style="-fx-background-color: #FFC940; -fx-font-size: 11pt;"
+                                        text="Modyfikuj rezerwację"/>
+                                <Button layoutX="735.0" layoutY="175.0" mnemonicParsing="false"
+                                        onAction="#deleteReservation" prefHeight="70.0" prefWidth="170.0"
+                                        style="-fx-background-color: #FF7373; -fx-font-size: 11pt;"
+                                        text="Usuń rezerwację"/>
+                                <Button layoutX="735.0" layoutY="255.0" mnemonicParsing="false"
+                                        onAction="#warningRefreshReservations" prefHeight="70.0" prefWidth="170.0"
+                                        style="-fx-background-color: #48AFF0; -fx-font-size: 11pt;" text="Odśwież"/>
+                                <Button layoutX="735.0" layoutY="335.0" mnemonicParsing="false"
+                                        onAction="#generateReservationReport" prefHeight="70.0" prefWidth="170.0"
+                                        style="-fx-background-color: #c499cc; -fx-font-size: 11pt;"
+                                        text="Wygeneruj raport"/>
+                                <Button layoutX="735.0" layoutY="415.0" mnemonicParsing="false" onAction="#paidWindow"
+                                        prefHeight="70.0" prefWidth="170.0"
+                                        style="-fx-background-color: #01a83a; -fx-font-size: 11pt;"
+                                        text="Opłata za pokój"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
